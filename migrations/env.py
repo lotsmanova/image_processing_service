@@ -12,7 +12,7 @@ sys.path.append(os.path.join(sys.path[0], 'src'))
 from src.config import DB_HOST, DB_NAME, DB_PASS, DB_PORT, DB_USER
 from src.database import metadata, Base
 from src.pipeline.models import *
-from src.image.models import *
+from model_machine_learning.detection_result.models import *
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

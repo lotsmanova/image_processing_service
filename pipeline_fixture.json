@@ -1,0 +1,25 @@
+{
+  "title": "process image",
+  "steps": [
+    {
+      "title": "convert_to_numpy",
+      "step_parameters": "string"
+    },
+    {
+      "title": "read_with_opencv",
+      "step_parameters": "string"
+    },
+    {
+      "title": "resize",
+      "step_parameters": "string"
+    },
+    {
+      "title": "normalize",
+      "step_parameters": "string"
+    },
+    {
+      "title": "encode_to_base64",
+      "step_parameters": "string"
+    }
+  ]
+}

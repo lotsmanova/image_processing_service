@@ -49,3 +49,4 @@ watchfiles
 websockets
 numpy
 opencv-python
+pytest-cov

@@ -8,7 +8,6 @@ from app.src.database import get_async_session
 from app.src.pipeline.crud import pipeline_crud
 from app.src.pipeline.routers import router as router_pipeline
 
-
 app = FastAPI(
     title="Image Processing Service"
 )
@@ -17,8 +16,9 @@ app.include_router(router_pipeline)
 
 
 @app.post("/process_image", tags=["Process Image"], response_model=Union[Dict[str, str], str])
-async def process_image(pipeline_id: int, image: UploadFile = File(...), session: AsyncSession = Depends(get_async_session)) -> \
-dict[str, str] | str:
+async def process_image(pipeline_id: int, image: UploadFile = File(...),
+                        session: AsyncSession = Depends(get_async_session)) -> \
+        dict[str, str] | str:
     try:
         # Получаем пайплайн из базы данных
         pipeline = await pipeline_crud.get_pipeline(session, pipeline_id)
@@ -37,7 +37,8 @@ dict[str, str] | str:
             elif step.title == 'resize':
                 resized_image = cv2.resize(image_cv2, (640, 640))
             elif step.title == 'normalize':
-                normalized_image = cv2.normalize(resized_image, None, alpha=0, beta=1, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
+                normalized_image = cv2.normalize(resized_image, None, alpha=0, beta=1,
+                                                 norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
             elif step.title == 'encode_to_base64':
                 _, encoded_image = cv2.imencode('.jpg', normalized_image)
                 base64_image = base64.b64encode(encoded_image.tobytes()).decode('utf-8')

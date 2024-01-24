@@ -36,16 +36,15 @@ class ResultCRUD:
             raise e
 
     async def get_results(self, db: AsyncSession, skip: int, limit: int) -> ScalarResult[Result]:
-            results = await db.execute(
-                select(Result).offset(skip).limit(limit)
-            )
-            # unique_pipelines = results.unique()
-            return results.scalars()
+        results = await db.execute(
+            select(Result).offset(skip).limit(limit)
+        )
+        # unique_pipelines = results.unique()
+        return results.scalars()
 
     async def get_result(self, db: AsyncSession, result_id: int) -> Result:
         result = await db.execute(select(Result).where(Result.id == result_id))
         return result.scalars().first()
-
 
 
 result_crud = ResultCRUD()

@@ -27,10 +27,11 @@ async def get_pipelines(
 
 
 @router.patch("/{id}", response_model=PipelineRead)
-async def edit_pipeline(id: int, pipeline: PipelineAdd, session: AsyncSession = Depends(get_async_session)) -> PipelineRead:
+async def edit_pipeline(id: int, pipeline: PipelineAdd,
+                        session: AsyncSession = Depends(get_async_session)) -> PipelineRead:
     db_pipeline = await pipeline_crud.update_pipeline(session, id, pipeline)
 
-    if db_pipeline == None:
+    if db_pipeline is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Pipeline not found"
         )

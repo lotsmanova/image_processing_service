@@ -27,7 +27,8 @@ class PipelineCRUD:
         return unique_pipelines.scalars()
 
     async def get_pipeline(self, db: AsyncSession, pipeline_id: int) -> Pipelines:
-        pipeline = await db.execute(select(Pipelines).options(joinedload(Pipelines.steps)).where(Pipelines.id == pipeline_id))
+        pipeline = await db.execute(select(Pipelines).options(joinedload(Pipelines.steps)).where
+                                    (Pipelines.id == pipeline_id))
         return pipeline.scalars().first()
 
     async def update_pipeline(

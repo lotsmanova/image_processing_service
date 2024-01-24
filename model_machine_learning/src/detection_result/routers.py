@@ -12,7 +12,7 @@ router = APIRouter(
 )
 
 
-@router.get("/result_detected", response_model=list[ResultRead])
+@router.get("", response_model=list[ResultRead])
 async def get_results(
         skip: Annotated[int, Query(ge=0)] = 0,
         limit: Annotated[int, Query(ge=0)] = 10,

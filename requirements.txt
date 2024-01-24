@@ -50,3 +50,4 @@ websockets
 numpy
 opencv-python
 pytest-cov
+flake8

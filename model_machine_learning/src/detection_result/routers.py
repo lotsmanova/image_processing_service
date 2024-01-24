@@ -2,9 +2,9 @@ from fastapi import APIRouter
 from typing import Annotated
 from fastapi import Depends, Query, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
-from model_machine_learning.detection_result.crud import result_crud
-from model_machine_learning.detection_result.schemas import ResultRead
-from src.database import get_async_session
+from model_machine_learning.src.detection_result.crud import result_crud
+from model_machine_learning.src.detection_result.schemas import ResultRead
+from app.src.database import get_async_session
 
 router = APIRouter(
     prefix="/image_detection",

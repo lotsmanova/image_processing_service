@@ -1,6 +1,6 @@
 from sqlalchemy import BigInteger, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from src.database import Base
+from app.src.database import Base
 
 
 class Pipelines(Base):

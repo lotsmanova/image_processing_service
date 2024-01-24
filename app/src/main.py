@@ -4,9 +4,9 @@ import cv2
 import numpy as np
 from fastapi import FastAPI, Depends, UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
-from src.database import get_async_session
-from src.pipeline.crud import pipeline_crud
-from src.pipeline.routers import router as router_pipeline
+from app.src.database import get_async_session
+from app.src.pipeline.crud import pipeline_crud
+from app.src.pipeline.routers import router as router_pipeline
 
 
 app = FastAPI(

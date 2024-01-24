@@ -1,9 +1,9 @@
 import random
 from fastapi import FastAPI, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
-from model_machine_learning.detection_result.crud import result_crud
-from src.database import get_async_session
-from model_machine_learning.detection_result.routers import router as router_result
+from model_machine_learning.src.detection_result.crud import result_crud
+from app.src.database import get_async_session
+from model_machine_learning.src.detection_result.routers import router as router_result
 
 app = FastAPI(
     title="Model Machine Learning"

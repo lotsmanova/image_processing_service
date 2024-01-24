@@ -1,8 +1,7 @@
-from sqlalchemy import insert, ScalarResult, select
+from sqlalchemy import ScalarResult, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
-from model_machine_learning.detection_result.models import Result
-from model_machine_learning.detection_result.schemas import ResultAdd
+from model_machine_learning.src.detection_result.models import Result
 
 
 class ResultCRUD:

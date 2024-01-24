@@ -1,9 +1,9 @@
 from typing import Annotated
 from fastapi import APIRouter, HTTPException, status, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
-from src.database import get_async_session
-from src.pipeline.schemas import PipelineRead, PipelineAdd
-from src.pipeline.crud import pipeline_crud
+from app.src.database import get_async_session
+from app.src.pipeline.schemas import PipelineRead, PipelineAdd
+from app.src.pipeline.crud import pipeline_crud
 
 router = APIRouter(
     prefix="/pipelines",

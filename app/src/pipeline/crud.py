@@ -3,8 +3,8 @@ from sqlalchemy.engine import ScalarResult
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload
-from src.pipeline.schemas import PipelineAdd
-from src.pipeline.models import Pipelines, Steps
+from app.src.pipeline.schemas import PipelineAdd
+from app.src.pipeline.models import Pipelines, Steps
 
 
 class PipelineCRUD:

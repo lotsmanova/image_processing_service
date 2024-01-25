@@ -1,0 +1,43 @@
+version: "3.7"
+
+services:
+ db:
+    image: postgres:15
+    container_name: db_app
+    command: -p 1221
+    expose:
+      - 1221
+    env_file:
+      - .env-non-dev
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+ model_ml:
+    build:
+      context: .
+      dockerfile: Dockerfile.ml
+    env_file:
+      - .env-non-dev
+    container_name: ml_app
+    command: ["/model_machine_learning/docker/ml.sh"]
+    ports:
+      - "9998:8001"
+    depends_on:
+      - db
+
+ app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    env_file:
+      - .env-non-dev
+    container_name: app
+    command: ["/app/docker/app.sh"]
+    ports:
+      - "9999:8000"
+    depends_on:
+      - db
+      - model_ml
